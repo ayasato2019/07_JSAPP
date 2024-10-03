@@ -35,7 +35,7 @@ return (
         </div>
         <div className="question-item flex">
             <label>
-                <span className="question-title">メモ</span><input type="number" id="record-notion" className="input text-right" placeholder="1000" /><span>&nbsp;円</span>
+                <span className="question-title">メモ</span><input type="text" id="record-notion" className="input" placeholder="お菓子を買った" /><span>&nbsp;円</span>
             </label>
         </div>
         <button type="submit" className="submit-button">登録</button>

@@ -48,7 +48,6 @@ export default function HomePage() {
   return (
     <div className="form inner">
       <form onSubmit={handleSubmit}>
-        <div>
           <h2 className="title" data-heading="registran">出金登録</h2>
 
           <div className="question-item">
@@ -104,12 +103,12 @@ export default function HomePage() {
             <label>
               <span className="question-title">メモ</span>
               <input
-                type="number"
-                name="record-notion"
-                className="input text-right"
-                placeholder="メモ"
-                value={recordNotion || ''}
-                onChange={(e) => setRecordNotion(Number(e.target.value))}
+                type="text"
+                name="record-title"
+                className="input"
+                value={recordNotion}
+                onChange={(e) => setRecordTitle(e.target.value)}
+                required
               />
               <span>&nbsp;円</span>
             </label>
@@ -118,7 +117,6 @@ export default function HomePage() {
           <button type="submit" className="submit-button">
             登録
           </button>
-        </div>
       </form>
     </div>
   );

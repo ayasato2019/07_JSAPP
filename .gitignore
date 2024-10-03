@@ -40,3 +40,5 @@ libs/*
 client.js
 functions.php
 src/libs/client.js
+
+*.json

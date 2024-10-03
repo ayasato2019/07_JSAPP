@@ -2,6 +2,7 @@
 import { notFound } from "next/navigation";
 import parse from "html-react-parser";
 import { client } from "@/libs/client";
+import Image from 'next/image';
 
 // 静的パスを生成する
 export async function generateStaticParams() {
@@ -37,13 +38,13 @@ export default async function StaticDetailPage({
     <div className="p-4 bg-white">
       <h1 className="text-2xl font-bold">{post.title}</h1>
       {post.eyecatch && (
-        <img
-          src={post.eyecatch.url}
-          alt={post.title}
-          width={post.eyecatch.width}
-          height={post.eyecatch.height}
-          className="w-full h-full aspect-square object-cover"
-        />
+      <Image
+      src={post.eyecatch.url} 
+      alt={post.title} 
+      width={post.eyecatch.width || 500} // デフォルトの幅
+      height={post.eyecatch.height || 500} // デフォルトの高さ
+      className='w-full h-full aspect-square object-cover' 
+      />
       )}
       <h2 className="text-gray-500">{time}</h2>
       <div className="mt-4">{parse(post.content)}</div>

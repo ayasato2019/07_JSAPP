@@ -1,5 +1,6 @@
 import { client } from '@/libs/client';
 import Link from "next/link";
+import Image from 'next/image';
 
 // アイキャッチ画像の型を定義
 interface Eyecatch {
@@ -30,12 +31,12 @@ export default async function Page() {
           <li key={item.id} className='w-1/2 md:w-1/4 p-2 bg-slate-50'>
             <Link href={`/static/${item.id}`} className='w-full h-96'>
               {item.eyecatch && (
-                <img 
-                  src={item.eyecatch.url} 
-                  alt={item.title} 
-                  width={item.eyecatch.width || 500} // デフォルトの幅
-                  height={item.eyecatch.height || 500} // デフォルトの高さ
-                  className='w-full h-full aspect-square object-cover' 
+                <Image
+                src={item.eyecatch.url} 
+                alt={item.title} 
+                width={item.eyecatch.width || 500} // デフォルトの幅
+                height={item.eyecatch.height || 500} // デフォルトの高さ
+                className='w-full h-full aspect-square object-cover' 
                 />
               )}
               <h2 className='mt-2 font-bold'>{item.title}</h2>

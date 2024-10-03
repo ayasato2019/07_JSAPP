@@ -1,125 +1,44 @@
-import React, { useState } from 'react';
+// import Link from "next/link";
+// import Header from "next/link";
+// import makeChart from "./makeChart.js";
 
-export default function HomePage() {
-  // 各入力項目を state で管理
-  const [priceType, setPriceType] = useState<string>('minus');
-  const [recordTitle, setRecordTitle] = useState<string>('');
-  const [recordDate, setRecordDate] = useState<string>('');
-  const [recordPrice, setRecordPrice] = useState<number | undefined>(undefined);
-  const [recordNotion, setRecordNotion] = useState<number | undefined>(undefined);
 
-  // フォームの登録ボタンクリック時にローカルストレージへ保存
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // 未入力項目があればアラート
-    if (!recordTitle || !recordDate || !recordPrice) {
-      alert("すべてのフィールドを入力してください");
-      return;
-    }
+export default async function HomePage() {
 
-    // 一意のIDを生成
-    const uniqueId = Date.now();
-
-    // 保存データをオブジェクト形式に
-    const newRecord = {
-      id: uniqueId,
-      type: priceType,
-      title: recordTitle,
-      date: recordDate,
-      price: recordPrice,
-      notion: recordNotion,
-    };
-
-    // ローカルストレージに保存
-    const existingRecords = JSON.parse(localStorage.getItem('records') || '[]');
-    localStorage.setItem('records', JSON.stringify([...existingRecords, newRecord]));
-
-    // フォームをクリア
-    setPriceType('minus');
-    setRecordTitle('');
-    setRecordDate('');
-    setRecordPrice(undefined);
-    setRecordNotion(undefined);
-
-    alert("登録が完了しました");
-  };
-
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div className="form inner">
-          <h2 className="title" data-heading="registran">出金登録</h2>
-
-          <div className="question-item">
+return (
+<div className="form inner">
+        <h2 className="title" data-heading="registran">出金登録</h2>
+        <div className="question-item">
             <label className="input">
-              <select
-                name="price-type"
-                value={priceType}
-                onChange={(e) => setPriceType(e.target.value)}
-              >
+                <select id="price-type">
                 <option value="plus">収入</option>
                 <option value="minus">支出</option>
-              </select>
+                </select>
             </label>
-          </div>
-
-          <div className="question-item">
-            <label>
-              <span className="question-title">項目名</span>
-              <input
-                type="text"
-                name="record-title"
-                className="input"
-                value={recordTitle}
-                onChange={(e) => setRecordTitle(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-
-          <div className="question-item">
-            <input
-              type="date"
-              name="record-date"
-              className="input"
-              value={recordDate}
-              onChange={(e) => setRecordDate(e.target.value)}
-            />
-          </div>
-
-          <div className="question-item flex">
-            <input
-              type="number"
-              name="record-price"
-              className="input text-right"
-              placeholder="1000"
-              value={recordPrice || ''}
-              onChange={(e) => setRecordPrice(Number(e.target.value))}
-            />
-            <span>&nbsp;円</span>
-          </div>
-
-          <div className="question-item flex">
-            <label>
-              <span className="question-title">メモ</span>
-              <input
-                type="text"
-                name="record-title"
-                className="input"
-                value={recordNotion}
-                onChange={(e) => setRecordTitle(e.target.value)}
-                required
-              />
-              <span>&nbsp;円</span>
-            </label>
-          </div>
-
-          <button type="submit" className="submit-button">
-            登録
-          </button>
         </div>
-      </form>
-    </>
-  );
+        <div className="question-item">
+            <label>
+                <span className="question-title">項目名</span><input type="text" id="record-title" className="input" required />
+            </label>
+        </div>
+        <div className="question-item">
+            <label>
+                <span className="question-title">日時</span>
+                <input type="date" id="record-date" className="input" />
+                </label>
+        </div>
+        <div className="question-item flex">
+            <label>
+                <span className="question-title">金額</span>
+                <input type="number" id="record-price" className="input text-right" placeholder="1000" /><span>&nbsp;円</span>
+            </label>
+        </div>
+        <div className="question-item flex">
+            <label>
+                <span className="question-title">メモ</span><input type="number" id="record-notion" className="input text-right" placeholder="1000" /><span>&nbsp;円</span>
+            </label>
+        </div>
+        <button type="submit" className="submit-button">登録</button>
+</div>
+);
 }

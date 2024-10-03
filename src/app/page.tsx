@@ -46,8 +46,9 @@ export default function HomePage() {
   };
 
   return (
-    <div className="form inner">
+    <>
       <form onSubmit={handleSubmit}>
+        <div className="form inner">
           <h2 className="title" data-heading="registran">出金登録</h2>
 
           <div className="question-item">
@@ -117,7 +118,8 @@ export default function HomePage() {
           <button type="submit" className="submit-button">
             登録
           </button>
+        </div>
       </form>
-    </div>
+    </>
   );
 }

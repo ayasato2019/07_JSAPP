@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "chart.js": "^4.4.4",
     "firebase": "^10.14.0",
     "firebase-admin": "^12.6.0",
     "html-react-parser": "^5.1.16",

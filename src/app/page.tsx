@@ -60,8 +60,6 @@ export default function HomePage() {
 
         // localStorageに保存（配列を文字列に変換）
         localStorage.setItem('records', JSON.stringify(updatedRecords));
-
-        alert('データが保存されました！');
     };
 
     // レコード削除の処理
